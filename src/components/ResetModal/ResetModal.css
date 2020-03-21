@@ -1,6 +1,4 @@
-import styled from 'styled-components';
-
-export const Blackout = styled.div`
+.Reset-Modal-Blackout {
   position: fixed;
   width: 100vw;
   height: 100vh;
@@ -9,9 +7,9 @@ export const Blackout = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
-`;
+}
 
-export const ModalContainer = styled.div`
+.Reset-Modal-Container {
   position: relative;
   max-width: 400px;
   width: 100%;
@@ -22,24 +20,24 @@ export const ModalContainer = styled.div`
   flex-direction: column;
   justify-content: center;
   align-items: center;
-`;
+}
 
-export const ModalText = styled.div`
-  posistion: relative;
+h4.Reset-Modal-Text {
+  position: relative;
   text-align: center;
   margin-top: 10px;
   font-size: 1em;
-`;
+}
 
-export const ModalButtonContainer = styled.div`
+.Reset-Modal-Button-Container {
   display: flex;
   justify-content: center;
   align-items: center;
-`;
+}
 
-export const ModalButton = styled.button`
+button.Reset-Modal-button {
   margin: 10px;
   background-color: lightgrey;
   border: none;
   padding: 0.5rem 1.5rem;
-`;
+}

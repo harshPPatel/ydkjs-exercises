@@ -1,31 +1,33 @@
-body {
-  background: #00d2ff; /* fallback for old browsers */
-  background: -webkit-linear-gradient(
-    to right,
-    #3a7bd5,
-    #00d2ff
-  ); /* Chrome 10-25, Safari 5.1-6 */
-  background: linear-gradient(
-    to right,
-    #3a7bd5,
-    #00d2ff
-  ); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
-}
-
-html {
-  font-size: 16px;
-  --easing-accelerate: 0.15s cubic-bezier(0.4, 0, 1, 1);
-  --easing-decelerate: 0.2s cubic-bezier(0, 0, 0.2, 1);
-  --easing-standard: 0.2s cubic-bezier(0.4, 0, 0.2, 1);
-  --easing-slower: 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-}
-
-html,
-body,
-#root {
+.App-Grid {
+  display: grid;
+  grid-template-columns: auto 1fr auto;
+  grid-template-rows: minmax(15vh, min-content) 1fr minmax(15vh, min-content);
+  grid-template-areas:
+    'sidebar header'
+    'sidebar main'
+    'sidebar footer';
+  grid-row-gap: 0.5rem;
   height: 100%;
+  overflow-x: scroll;
+  z-index: 0;
 }
 
-a {
-  outline: none;
+.App-Grid::before {
+  content: '';
+  display: 'block';
+  background-color: rgba(0, 0, 0, 0.5);
+  height: 100%;
+  position: absolute;
+  width: 100%;
+  transition: var(--easing-standard);
+}
+
+.App-Grid .Main-Content-Grid-Child {
+  position: relative;
+  display: block;
+  grid-area: main;
+  place-self: start stretch;
+  text-align: center;
+  transition: var(--easing-standard);
+  width: 100%;
 }

@@ -1,24 +1,20 @@
 import React, { Component } from 'react';
 import { withRouter } from 'react-router-dom';
+
 import { reinitializeScore } from '../../helpers/helpers';
-import {
-  Blackout,
-  ModalContainer,
-  ModalText,
-  ModalButtonContainer,
-  ModalButton,
-} from './styles';
+import './ResetModal.css';
 
 const ResetButton = props =>
   withRouter(({ history, resetScore }) => (
-    <ModalButton
+    <button
+      className="Reset-Modal-button"
       onClick={() => {
         resetScore();
         history.push('/');
       }}
     >
       Yes
-    </ModalButton>
+    </button>
   ))(props);
 
 class ResetModal extends Component {
@@ -37,15 +33,22 @@ class ResetModal extends Component {
 
   render() {
     return (
-      <Blackout>
-        <ModalContainer>
-          <ModalText>Are you sure you want to reset your score?</ModalText>
-          <ModalButtonContainer>
+      <div className="Reset-Modal-Blackout">
+        <div className="Reset-Modal-Container">
+          <h4 className="Reset-Modal-Text">
+            Are you sure you want to reset your score?
+          </h4>
+          <div className="Reset-Modal-Button-Container">
             <ResetButton resetScore={this.resetScore} />
-            <ModalButton onClick={this.props.handleShowReset}>No</ModalButton>
-          </ModalButtonContainer>
-        </ModalContainer>
-      </Blackout>
+            <button
+              className="Reset-Modal-button"
+              onClick={this.props.handleShowReset}
+            >
+              No
+            </button>
+          </div>
+        </div>
+      </div>
     );
   }
 }

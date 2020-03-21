@@ -1,11 +1,11 @@
 import React from 'react';
-import { HeaderGridChild, Marquee } from './styled';
 import { Link } from 'react-router-dom';
 import Menu from '../../svgs/Menu';
+import './Header.css';
 
 const Header = ({ show, toggle }) => {
   return (
-    <HeaderGridChild data-name="Header">
+    <header className="Header" data-name="Header">
       {!show && (
         <div>
           <button
@@ -33,10 +33,10 @@ const Header = ({ show, toggle }) => {
           }}
           to="/"
         >
-          <Marquee>{`You Don't Know JS Exercises`}</Marquee>
+          <h1 className="Logo">{`You Don't Know JS Exercises`}</h1>
         </Link>
       </div>
-    </HeaderGridChild>
+    </header>
   );
 };
 

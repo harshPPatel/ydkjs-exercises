@@ -17,43 +17,15 @@ import { ScoreContext, score } from './score-context';
 const books = initializeBooks(rawBooks);
 
 const AppGrid = styled.div`
-  display: grid;
-  grid-template-columns: auto 1fr auto;
-  grid-template-rows: minmax(15vh, min-content) 1fr minmax(15vh, min-content);
-  grid-template-areas:
-    'sidebar header'
-    'sidebar main'
-    'sidebar footer';
-  grid-row-gap: 0.5rem;
-  height: 100%;
-  overflow-x: scroll;
   overflow-y: ${props =>
     props.shouldShowSidebar && props.isNarrowScreen ? 'hidden' : 'scroll'};
-  z-index: 0;
 
   &:before {
-    content: '';
-    display: 'block';
-    background-color: rgba(0, 0, 0, 0.5);
-    height: 100%;
     opacity: ${props =>
       props.shouldShowSidebar && props.isNarrowScreen ? 1 : 0};
-    position: absolute;
-    width: 100%;
-    transition: var(--easing-standard);
     z-index: ${props =>
       props.shouldShowSidebar && props.isNarrowScreen ? 10 : -1};
   }
-`;
-
-const MainContentGridChild = styled.div`
-  position: relative;
-  display: block;
-  grid-area: main;
-  place-self: start stretch;
-  text-align: center;
-  transition: var(--easing-standard);
-  width: 100%;
 `;
 
 class App extends Component {
@@ -116,6 +88,7 @@ class App extends Component {
         <Toggle show={!this.state.isNarrowScreen}>
           {({ show, toggle }) => (
             <AppGrid
+              className="App-Grid"
               data-name="App"
               isNarrowScreen={this.state.isNarrowScreen}
               shouldShowSidebar={show}
@@ -144,7 +117,7 @@ class App extends Component {
                 onMenuClick={toggle}
               />
               <Header show={show} toggle={toggle} />
-              <MainContentGridChild data-name="Main">
+              <div className="Main-Content-Grid-Child" data-name="Main">
                 <Switch>
                   <Route exact path="/" render={() => <Home books={books} />} />
                   {books.map((book, index) => {
@@ -159,7 +132,7 @@ class App extends Component {
                   })}
                   <Route component={NoMatch} />
                 </Switch>
-              </MainContentGridChild>
+              </div>
               <Footer />
             </AppGrid>
           )}

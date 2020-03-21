@@ -1,15 +1,5 @@
 import styled from 'styled-components';
 
-export const ListItem = styled.li`
-  font-size: 25px;
-  padding: 0.5rem calc(0.5rem + (1rem * (${props => props.nest || 1}) / 1));
-  text-align: left;
-
-  &:hover {
-    background: rgba(200, 200, 200, 0.5);
-  }
-`;
-
 export const ArrowButton = styled.button`
   margin-right: 0.5rem;
   border: 0;
@@ -39,4 +29,4 @@ export const DrawerMenuChild = styled.div`
 // export const DrawerToggle = styled.div`
 //   flex-
 // `
-ListItem.displayName = 'ListItem';
+// ListItem.displayName = 'ListItem';

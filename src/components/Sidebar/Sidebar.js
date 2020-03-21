@@ -1,13 +1,7 @@
 import React, { Component, Fragment } from 'react';
 import PropTypes from 'prop-types';
-import {
-  List,
-  ListItem,
-  ListItemTitle,
-  Divider,
-  FlatButton,
-  SidebarGridChild,
-} from './styled';
+import { SidebarGridChild } from './styled';
+import './Sidebar.css';
 import DrawerMenu from '../DrawerMenu';
 import ProgressBar from '../ProgressBar';
 import { reinitializeScore } from '../../helpers/helpers';
@@ -59,30 +53,24 @@ export default class Sidebar extends Component {
     return (
       <Fragment>
         <SidebarGridChild
+          className="Sidebar-Grid-Child"
           isNarrowScreen={isNarrowScreen}
           shouldShow={shouldShow}
         >
           <button
             onClick={onMenuClick}
-            style={{
-              textAlign: 'right',
-              marginTop: '10px',
-              border: 0,
-              background: 'transparent',
-              position: 'absolute',
-              right: '10px',
-            }}
+            className="Close-Button"
             data-testid="closeSidebar"
           >
             <Close data-name="svg" />
           </button>
           {shouldShow && (
-            <List>
-              <ListItemTitle>Progress</ListItemTitle>
-              <ListItem>
+            <ul className="List">
+              <li className="List-Item-Title">Progress</li>
+              <li className="List-Item">
                 <ProgressBar score={score} />
-              </ListItem>
-              <ListItem>
+              </li>
+              <li className="List-Item">
                 <p>
                   You've answered <strong>{score.correct}</strong> out of{' '}
                   <strong>{scoreAnswered}</strong> (<strong>{scorePct}%</strong>)
@@ -92,17 +80,17 @@ export default class Sidebar extends Component {
                   <strong>{score.possible - scoreAnswered}</strong> left to
                   answer.
                 </p>
-              </ListItem>
+              </li>
 
-              <Divider />
+              <hr className="Divider" />
 
-              <ListItemTitle>Books</ListItemTitle>
+              <li className="List-Item-Title">Books</li>
 
               {books.map((book, index) => {
                 const { correct, possible } = this.getBookScores(
                   score.books[index]
                 );
-                                  
+
                 return (
                   <DrawerMenu
                     key={`b${index}`}
@@ -110,9 +98,10 @@ export default class Sidebar extends Component {
                     to={book.url}
                     nest={1}
                     title={
-                      <span data-testid={book.url} style={{ fontSize: '1rem' }}>{`${
-                        book.title
-                      } (${correct} /
+                      <span
+                        data-testid={book.url}
+                        style={{ fontSize: '1rem' }}
+                      >{`${book.title} (${correct} /
                   ${possible})`}</span>
                     }
                   >
@@ -157,13 +146,16 @@ export default class Sidebar extends Component {
                   </DrawerMenu>
                 );
               })}
-            </List>
+            </ul>
           )}
           {shouldShow && (
             <section>
-              <FlatButton onClick={this.props.handleShowReset}>
+              <button
+                className="Flat-Button"
+                onClick={this.props.handleShowReset}
+              >
                 Reset Progress
-              </FlatButton>
+              </button>
             </section>
           )}
         </SidebarGridChild>

@@ -1,24 +1,15 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { withRouter, Link } from 'react-router-dom';
-import {
-  Fieldset,
-  FlatButton,
-  Header3,
-  QuestionStyle,
-  MessageWrapper,
-  Section,
-  SubmitButton,
-  Wrapper,
-} from './styled';
+import ReactMarkdown from 'react-markdown';
 
-import './styles.css';
 import CodeBlock from '../markdown-renderers/CodeBlock';
 import CodeInline from '../markdown-renderers/CodeInline';
 import Root from '../markdown-renderers/Root';
 import Paragraph from '../markdown-renderers/Paragraph';
 import { getNewScore } from '../../helpers/helpers';
-const ReactMarkdown = require('react-markdown');
+
+import './Question.css';
 
 export class Question extends Component {
   static propTypes = {
@@ -151,9 +142,9 @@ export class Question extends Component {
 
     return (
       <React.Fragment>
-        <Wrapper>
-          <Header3>{`Question ${index} of ${numberOfQuestions}`}</Header3>
-          <QuestionStyle data-testid="question">
+        <div className="Question-Wrapper">
+          <h3 className="Question-Header">{`Question ${index} of ${numberOfQuestions}`}</h3>
+          <h4 className="Question" data-testid="question">
             <ReactMarkdown
               renderers={{
                 code: CodeBlock,
@@ -161,9 +152,9 @@ export class Question extends Component {
               }}
               source={question.question}
             />
-          </QuestionStyle>
+          </h4>
           <form onSubmit={event => this.handleSubmit(event)}>
-            <Fieldset>
+            <fieldset className="Answer-Fieldset">
               {question.answers.map((answer, i) => {
                 let answerColor;
                 if (answerSubmitted) {
@@ -219,8 +210,10 @@ export class Question extends Component {
                   </div>
                 );
               })}
-            </Fieldset>
-            <SubmitButton type="submit">Submit</SubmitButton>
+            </fieldset>
+            <button className="Submit-Button" type="submit">
+              Submit
+            </button>
             {answerSubmitted &&
               explanationRequested && (
                 <div>
@@ -262,23 +255,27 @@ export class Question extends Component {
                 </button>
               )}
           </form>
-          <MessageWrapper>{message}</MessageWrapper>
-        </Wrapper>
+          <div className="Message-Wrapper">{message}</div>
+        </div>
 
-        <Section>
+        <section className="Section">
           {question.prevUrl ? (
             <Link to={question.prevUrl}>
-              <FlatButton disabled={false}>
+              <button className="Flat-Button" disabled={false}>
                 {question.prevButtonLabel}
-              </FlatButton>
+              </button>
             </Link>
           ) : (
-            <FlatButton disabled={true}>{question.prevButtonLabel}</FlatButton>
+            <button className="Flat-Button" disabled={true}>
+              {question.prevButtonLabel}
+            </button>
           )}
           <Link to={question.nextUrl}>
-            <FlatButton disabled={false}>{question.nextButtonLabel}</FlatButton>
+            <button className="Flat-Button" disabled={false}>
+              {question.nextButtonLabel}
+            </button>
           </Link>
-        </Section>
+        </section>
       </React.Fragment>
     );
   }

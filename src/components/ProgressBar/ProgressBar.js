@@ -1,5 +1,6 @@
 import React from 'react';
-import { Bar, Segment } from './styled';
+
+import './ProgressBar.css';
 
 const ProgressBar = props => {
   const correctWidth = Math.round(
@@ -9,18 +10,18 @@ const ProgressBar = props => {
     (100 * props.score.incorrect) / props.score.possible
   );
   return (
-    <Bar>
-      <Segment
+    <div className="Progress-Bar">
+      <div
+        className="Correct-Segment"
         data-testid="correct"
-        backgroundColor="correct"
-        width={`${correctWidth}%`}
+        style={{ width: `${correctWidth}%` }}
       />
-      <Segment
+      <div
+        className="Incorrect-Segment"
         data-testid="incorrect"
-        backgroundColor="incorrect"
-        width={`${incorrectWidth}%`}
+        style={{ width: `${incorrectWidth}%` }}
       />
-    </Bar>
+    </div>
   );
 };
 

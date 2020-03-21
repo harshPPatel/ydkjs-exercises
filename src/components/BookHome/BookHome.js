@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
-import { List, ListItem } from './styled';
+import './BookHome.css';
 
 class BookHome extends Component {
   static propTypes = {
@@ -11,9 +11,9 @@ class BookHome extends Component {
     const { book } = this.props;
 
     return (
-      <List>
+      <ul className="Book-Home-List">
         {book.chapters.map(chapter => (
-          <ListItem key={book.id + chapter.url} style={{ textAlign: 'left' }}>
+          <li className="Book-Home-List-Item" key={book.id + chapter.url}>
             <Link
               to={book.url + chapter.url}
               style={{
@@ -23,9 +23,9 @@ class BookHome extends Component {
             >
               {chapter.title}
             </Link>
-          </ListItem>
+          </li>
         ))}
-      </List>
+      </ul>
     );
   }
 }

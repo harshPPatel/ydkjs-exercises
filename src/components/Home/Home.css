@@ -1,0 +1,17 @@
+ul.Home-List {
+  width: 40%;
+  margin: 0 auto;
+  list-style: none;
+  padding: 0;
+}
+
+ul.Home-List li.List-Item {
+  color: black;
+  font-size: 25px;
+  line-height: 25px;
+  padding: 0.8rem;
+}
+
+ul.Home-List li.List-Item:hover {
+  background-color: rgba(200, 200, 200, 0.5);
+}

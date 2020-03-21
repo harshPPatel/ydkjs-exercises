@@ -1,0 +1,18 @@
+ul.Book-Home-List {
+  width: 40%;
+  margin: 0 auto;
+  list-style: none;
+  padding: 0;
+}
+
+ul.Book-Home-List li.Book-Home-List-Item {
+  color: black;
+  font-size: 25px;
+  line-height: 25px;
+  padding: 0.8rem;
+  text-align: left;
+}
+
+ul.Book-Home-List li.Book-Home-List-Item:hover {
+  background-color: rgba(200, 200, 200, 0.5);
+}

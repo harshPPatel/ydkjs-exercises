@@ -1,0 +1,45 @@
+.Drawer-Menu-Container {
+  display: flex;
+  flex-flow: column nowrap;
+  transition: var(--easing-standard);
+}
+
+.Drawer-Menu-Container.Nest-1 {
+  margin-left: 1rem;
+}
+
+.Drawer-Menu-Container.Nest-2 {
+  margin-left: 2rem;
+}
+
+.Drawer-Menu-Container.Nest-3 {
+  margin-left: 3rem;
+}
+
+.Drawer-Menu-Container li.List-Item {
+  font-size: 25px;
+  text-align: left;
+}
+
+.Drawer-Menu-Container li.List-Item:hover {
+  background: rgba(200, 200, 200, 0.5);
+}
+
+.Drawer-Menu-Container button.Arrow-Button {
+  margin-right: 0.5rem;
+  border: 0;
+  background: transparent;
+}
+
+.Drawer-Menu-Container button.Arrow-button:hover {
+  background: transparent;
+}
+
+.Drawer-Menu-Container button.Arrow-button:focus {
+  outline: none;
+}
+
+.Drawer-Menu-Container div.Drawer-Menu-Child {
+  overflow-y: hidden;
+  transition: var(--easing-slower);
+}
